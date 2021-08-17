@@ -87,6 +87,8 @@ gandi_api_key: ''
 gandi_sharing_id: ''
 transip_username: ''
 transip_api_key: ''
+ionos_prefix:''
+ionos_secret:''
 ```
 
 ## Advanced
@@ -428,7 +430,35 @@ transip_api_key: ''
   ```
   
 </details>
+<details>
+  <summary>IONOS</summary>
 
+  You will need to generate a IONOS API Key first at https://eu.api.ovh.com/createToken/ (for Europe) or https://ca.api.ovh.com/createToken/ (for north America). 
+
+  When creating the API Key, you must ensure that the following rights are granted:
+  * ``GET /domain/zone/*``
+  * ``PUT /domain/zone/*``
+  * ``POST /domain/zone/*``
+  * ``DELETE /domain/zone/*``
+
+  Example configuration
+  ```yaml
+  email: your.email@example.com
+  domains:
+    - home-assistant.io
+  certfile: fullchain.pem
+  keyfile: privkey.pem
+  challenge: dns
+  dns:
+    provider: dns-ovh
+    ovh_endpoint: ovh-eu
+    ovh_application_key: 0123456789abcdef0123456789abcdef01234
+    ovh_application_secret: 0123456789abcdef0123456789abcdef01234
+    ovh_consumer_key: 0123456789abcdef0123456789abcdef01234
+  ```
+  Use `ovh_endpoint: ovh-ca` for north America region.
+
+</details>
 
 ## Certificate files
 
@@ -459,6 +489,7 @@ dns-sakuracloud
 dns-netcup
 dns-gandi
 dns-transip
+dns-ionos
 ```
 
 ## Support
