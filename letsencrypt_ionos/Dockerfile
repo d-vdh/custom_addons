@@ -22,7 +22,7 @@ RUN apk add --no-cache --update \
         certbot==${CERTBOT_VERSION} \
         certbot-dns-ionos==${CERTBOT_DNS_IONOS_VERSION}\
     && apk del .build-dependencies
-#RUN pip3 install certbot-dns-ionos==${CERTBOT_DNS_IONOS_VERSION}
+RUN pip3 install certbot-dns-ionos==${CERTBOT_DNS_IONOS_VERSION}
 
 # Copy data
 COPY rootfs /
