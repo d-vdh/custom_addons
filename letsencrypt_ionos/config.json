@@ -1,6 +1,6 @@
 {
   "name": "Let's Encrypt",
-  "version": "4.11.0",
+  "version": "latest",
   "slug": "letsencrypt",
   "description": "Manage certificate from Let's Encrypt",
   "url": "https://github.com/home-assistant/hassio-addons/tree/master/letsencrypt",
@@ -38,5 +38,5 @@
       "ionos_secret": "str?"
     }
   },
-  "image": "roterbulle/letsencrypt-armv6:latest"
+  "image": "roterbulle/letsencrypt-armv6"
 }
