@@ -1,4 +1,4 @@
-ARG BUILD_FROM=homeassistant/armv7-base-python:3.7-alpine3.14
+ARG BUILD_FROM=homeassistant/armv7-base-python:3.7-alpine3.11
 FROM $BUILD_FROM
 
 # ARG BUILD_ARCH='armhf'
