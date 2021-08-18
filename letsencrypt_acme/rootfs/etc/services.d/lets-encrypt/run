@@ -1,0 +1,27 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start sshd service if enabled
+# ==============================================================================
+CERT_DIR=/data/letsencrypt
+WORK_DIR=/data/workdir
+PROVIDER_ARGUMENTS=()
+ACME_CUSTOM_SERVER_ARGUMENTS=()
+
+EMAIL=$(bashio::config 'email')
+DOMAINS=$(bashio::config 'domains')
+KEYFILE=$(bashio::config 'keyfile')
+CERTFILE=$(bashio::config 'certfile')
+CHALLENGE=$(bashio::config 'challenge')
+DNS_PROVIDER=$(bashio::config 'dns.provider')
+ACME_SERVER=$(bashio::config 'acme_server')
+ACME_ROOT_CA=$(bashio::config 'acme_root_ca_cert')
+
+curl https://get.acme.sh | sh -s $EMAIL
+export IONOS_PREFIX=$(bashio::config 'ionos_prefix')
+export IONOS_SECRET=$(bashio::config 'ionos_secret')
+acme.sh/acme.sh --issue -d $DOMAINS -w $CERT_DIR --dns dns_ionos
+# Get the last modified cert directory and copy the cert and private key to store
+# shellcheck disable=SC2012
+CERT_DIR_LATEST="$(ls -td $CERT_DIR/live/*/ | head -1)"
+cp "${CERT_DIR_LATEST}privkey.pem" "/ssl/$KEYFILE"
+cp "${CERT_DIR_LATEST}fullchain.pem" "/ssl/$CERTFILE"
