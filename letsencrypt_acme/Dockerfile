@@ -8,10 +8,10 @@ FROM $BUILD_FROM
 # #ENV PATH="~/.cargo/bin:${PATH}"
 
 
-# RUN apk add --no-cache --update \
+ RUN apk add --no-cache --update \
 #         libffi \
 #         musl \
-#         openssl \
+         openssl 
 #     && apk add --no-cache --virtual .build-dependencies \
 #         cargo \
 #         g++ \

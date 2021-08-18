@@ -19,7 +19,7 @@ ACME_ROOT_CA=$(bashio::config 'acme_root_ca_cert')
 curl https://get.acme.sh | sh -s email=$EMAIL
 export IONOS_PREFIX=$(bashio::config 'ionos_prefix')
 export IONOS_SECRET=$(bashio::config 'ionos_secret')
-acme.sh/acme.sh --issue -d $DOMAINS -w $CERT_DIR --dns dns_ionos
+ /root/.acme.sh/acme.sh --issue -d $DOMAINS -w $CERT_DIR --dns dns_ionos --server letsencrypt
 # Get the last modified cert directory and copy the cert and private key to store
 # shellcheck disable=SC2012
 CERT_DIR_LATEST="$(ls -td $CERT_DIR/live/*/ | head -1)"

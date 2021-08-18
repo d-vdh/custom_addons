@@ -38,5 +38,5 @@
       "ionos_secret": "str?"
     }
   },
-  "image": "roterbulle/letsencrypt-armv6"
+  "image": "roterbulle/letsencrypt-armv7"
 }
