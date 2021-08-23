@@ -1,10 +1,10 @@
 {
   "name": "Let's Encrypt acme.sh",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "slug": "letsencrypt_acme",
   "description": "Manage certificate from Let's Encrypt",
   "url": "https://github.com/roterBulle/custom_addons/tree/main/letsencrypt_acme",
-  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "arch": ["armv7"],
   "startup": "once",
   "init": false,
   "boot": "manual",
@@ -24,6 +24,5 @@
     "keyfile": "str",
     "ionos_prefix": "str",
     "ionos_secret": "str"
-  },
-  "image": "roterbulle/acmesh-armv7"
+  }
 }

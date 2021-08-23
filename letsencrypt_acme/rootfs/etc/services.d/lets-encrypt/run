@@ -11,29 +11,13 @@ EMAIL=$(bashio::config 'email')
 DOMAINS=$(bashio::config 'domains')
 KEYFILE=$(bashio::config 'keyfile')
 CERTFILE=$(bashio::config 'certfile')
-CHALLENGE=$(bashio::config 'challenge')
-DNS_PROVIDER=$(bashio::config 'dns.provider')
 ACME_SERVER=$(bashio::config 'acme_server')
 ACME_ROOT_CA=$(bashio::config 'acme_root_ca_cert')
 IONOS_PREFIX=$(bashio::config 'ionos_prefix')
 IONOS_SECRET=$(bashio::config 'ionos_secret')
 
-echo $IONOS_PREFIX
-echo $IONOS_SECRET
-
-#curl https://get.acme.sh | sh -s email=$EMAIL
 export IONOS_PREFIX=$IONOS_PREFIX
 export IONOS_SECRET=$IONOS_SECRET
-echo "ENV set"
-#print the ENV Variables to check if they are correct
-#find / -name "acme.sh" -type f
-# /root/.acme.sh/acme.sh --issue --dns dns_ionos -d $DOMAINS --server letsencrypt --debug 2
-echo $IONOS_PREFIX
-echo $IONOS_SECRET
+
 /root/.acme.sh/acme.sh --register-account -m $EMAIL
 /root/.acme.sh/acme.sh --issue --dns dns_ionos -d $DOMAINS --key-file /ssl/$KEYFILE --cert-file /ssl/$CERTFILE
-# Get the last modified cert directory and copy the cert and private key to store
-# shellcheck disable=SC2012
-# CERT_DIR_LATEST="$(ls -td $CERT_DIR/live/*/ | head -1)"
-# cp "${CERT_DIR_LATEST}privkey.pem" "/ssl/$KEYFILE"
-# cp "${CERT_DIR_LATEST}fullchain.pem" "/ssl/$CERTFILE"
