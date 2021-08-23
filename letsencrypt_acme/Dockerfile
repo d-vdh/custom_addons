@@ -21,11 +21,12 @@ FROM $BUILD_FROM
                 tar \
                 libidn
 
-ENV LE_CONFIG_HOME /data/acme.sh
+ENV LE_CONFIG_HOME /acme.sh
 #Install
 COPY ./ /install_acme.sh/
 RUN cd /install_acme.sh && ([ -f /install_acme.sh/acme.sh ] && /install_acme.sh/acme.sh --install || curl https://get.acme.sh | sh) && rm -rf /install_acme.sh/
 
+VOLUME /acme.sh
 # RUN ln -s  /data/.acme.sh/acme.sh  /usr/local/bin/acme.sh && crontab -l | grep acme.sh | sed 's#> /dev/null##' | crontab -
 
 # RUN printf "%b" '#!'"/usr/bin/env sh\n \
