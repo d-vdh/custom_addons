@@ -1,4 +1,4 @@
-ARG BUILD_FROM=homeassistant/armv7-base-python:3.7-alpine3.12
+ARG BUILD_FROM
 FROM $BUILD_FROM
 
  RUN apk add --no-cache --update \
