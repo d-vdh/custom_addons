@@ -1,4 +1,4 @@
-ARG BUILD_FROM=homeassistant/armv7-base-python:3.7-alpine3.11
+ARG BUILD_FROM=homeassistant/armv7-base-python:3.7-alpine3.12
 FROM $BUILD_FROM
 
 # ARG BUILD_ARCH='armhf'
@@ -9,9 +9,36 @@ FROM $BUILD_FROM
 
 
  RUN apk add --no-cache --update \
+                openssl \
+                openssh-client \
+                coreutils \
+                bind-tools \
+                curl \
+                sed \
+                socat \
+                tzdata \
+                oath-toolkit-oathtool \
+                tar \
+                libidn
+
+ENV LE_CONFIG_HOME /data/acme.sh
+#Install
+COPY ./ /install_acme.sh/
+RUN cd /install_acme.sh && ([ -f /install_acme.sh/acme.sh ] && /install_acme.sh/acme.sh --install || curl https://get.acme.sh | sh) && rm -rf /install_acme.sh/
+
+# RUN ln -s  /data/.acme.sh/acme.sh  /usr/local/bin/acme.sh && crontab -l | grep acme.sh | sed 's#> /dev/null##' | crontab -
+
+# RUN printf "%b" '#!'"/usr/bin/env sh\n \
+# if [ \"\$1\" = \"daemon\" ];  then \n \
+#  trap \"echo stop && killall crond && exit 0\" SIGTERM SIGINT \n \
+#  crond && while true; do sleep 1; done;\n \
+# else \n \
+#  exec -- \"\$@\"\n \
+# fi" >/entry.sh && chmod +x /entry.sh
+
 #         libffi \
 #         musl \
-         openssl 
+#         openssl 
 #     && apk add --no-cache --virtual .build-dependencies \
 #         cargo \
 #         g++ \
