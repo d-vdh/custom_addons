@@ -20,4 +20,4 @@ export IONOS_PREFIX=$IONOS_PREFIX
 export IONOS_SECRET=$IONOS_SECRET
 
 /root/.acme.sh/acme.sh --register-account -m $EMAIL
-/root/.acme.sh/acme.sh --issue --dns dns_ionos -d $DOMAINS --key-file /ssl/$KEYFILE --cert-file /ssl/$CERTFILE
+/root/.acme.sh/acme.sh --issue --dns dns_ionos -d $DOMAINS --key-file /ssl/$KEYFILE --fullchain-file /ssl/$CERTFILE
