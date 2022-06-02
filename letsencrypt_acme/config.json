@@ -1,6 +1,6 @@
 {
   "name": "Let's Encrypt acme.sh",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "slug": "letsencrypt_acme",
   "description": "Manage certificate from Let's Encrypt",
   "url": "https://github.com/roterBulle/custom_addons/tree/main/letsencrypt_acme",
