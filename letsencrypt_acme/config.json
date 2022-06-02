@@ -4,7 +4,7 @@
   "slug": "letsencrypt_acme",
   "description": "Manage certificate from Let's Encrypt",
   "url": "https://github.com/roterBulle/custom_addons/tree/main/letsencrypt_acme",
-  "arch": ["armv7"],
+  "arch": ["armv7", "amd64"],
   "startup": "once",
   "init": false,
   "boot": "manual",
