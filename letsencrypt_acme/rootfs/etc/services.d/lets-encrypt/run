@@ -22,4 +22,4 @@ export IONOS_SECRET=$IONOS_SECRET
 /root/.acme.sh/acme.sh --register-account -m $EMAIL
 /root/.acme.sh/acme.sh --issue --dns dns_ionos -d $DOMAINS --key-file /ssl/$KEYFILE --fullchain-file /ssl/$CERTFILE
 
-curl http://supervisor/addons/self/stop
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" http://supervisor/addons/self/stop
